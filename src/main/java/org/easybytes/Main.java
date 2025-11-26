@@ -8,21 +8,15 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static void main() {
-        Vehicle vehicle =  new Vehicle();
-        vehicle.setName("honda city");
-        System.out.println("Vehicle name from the non-spring context is = " + vehicle.getName());
-
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
-        Vehicle veh = context.getBean(Vehicle.class);
-        System.out.println("Vehicle name from the Spring context is = " + veh.getName());
+        Vehicle veh1 = context.getBean("audiVehicle", Vehicle.class);
+        System.out.println("Vehicle name from Spring context is = " + veh1.getName());
 
-        String hello = context.getBean(String.class);
-        System.out.println("String value from Spring context is = " + hello);
+        Vehicle veh2 = context.getBean("hondaVehicle", Vehicle.class);
+        System.out.println("Vehicle name from Spring context is = " + veh2.getName());
 
-        Integer num = context.getBean(Integer.class);
-        System.out.println("Integer value from Spring context is = " + num);
-
-
+        Vehicle veh3 = context.getBean("ferrariVehicle", Vehicle.class);
+        System.out.println("Vehicle name from Spring context is = " + veh3.getName());
     }
 }
